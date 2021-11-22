@@ -7,18 +7,18 @@ import re
 '''
 获取所有内容发布的时间，以及标题
 需要手动操作的部分为：
-翻至底端，看有多少页新闻，更改参数，
+翻至底端，获取新闻页数，更改参数，
 手动扫码登陆
 用户姓名
 '''
 
 
 # 未解决问题：
-# 1.有敏感词时点不动
-# 2.日期不对，日期有三种格式
+# 1.有政治敏感词时，评论可见部分，但是点击没有反应。
+
 def login():
     '''
-    模拟登录（不是）
+    模拟登录
     '''
     driver.get('https://weibo.com/u/7191384052/home?leftnav=1')
     driver.maximize_window()
@@ -45,7 +45,7 @@ def Transfer(driver):
 
 def get_more():
     """
-    功能：点击查看更多
+    功能：点击微博底端查看更多页面
     """
     time.sleep(1)
     more = driver.find_element_by_xpath(
@@ -57,7 +57,6 @@ def get_more():
 
 def clear(text):
     '''
-
     :param text: 原文本
     :return: 清洗后的评论文本
     '''
